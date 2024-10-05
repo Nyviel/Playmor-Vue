@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
 import { API } from "@/utilities/constants";
+import { Divide, LogIn, LogOut, Pencil, Search } from "lucide-vue-next";
+import Separator from "./ui/separator/Separator.vue";
 const isAuthenticated = ref(false);
 const isAdmin = ref(false);
 console.log(API);
@@ -8,22 +10,21 @@ console.log(API);
 
 <template>
 	<header className="w-full flex items-center bg-transparent">
-		<a href="/" className="text-3xl" id="logo">
-			<span className="text-violet-500 font-bold">Play</span>
-			<span className="text-white">Mor</span>
-		</a>
+		<RouterLink to="/" id="logo">
+			<div class="text-3xl">
+				<span className="text-violet-500 font-bold">Play</span>
+				<span className="text-white">Mor</span>
+			</div>
+		</RouterLink>
 		<nav className="relative flex-1">
 			<ul
 				role="list"
 				className="hidden md:flex md:flex-row items-center justify-end gap-5 text-white"
 			>
 				<a href="/explore" className="hover:cursor-pointer">
-					Explore
+					Explore <Search class="inline ms-1" />
 				</a>
-				<a href="/about" className="hover:cursor-pointer"> About </a>
-				<a href="/contact" className="hover:cursor-pointer">
-					Contact
-				</a>
+				<Separator orientation="vertical" style="height: 20px" />
 				<div v-if="isAdmin">
 					<a href="/dashboard" className="hover:cursor-pointer">
 						Dashboard
@@ -43,15 +44,16 @@ console.log(API);
 						"
 						className="hover:cursor-pointer"
 					>
-						Logout
+						Logout <LogOut class="inline ms-1" />
 					</a>
 				</div>
-				<div v-else class="flex gap-5">
+				<div v-else class="flex gap-5 justify-center items-center">
 					<a href="/auth/login" className="hover:cursor-pointer">
-						Login
+						Login <LogIn class="inline ms-1" />
 					</a>
+					<Separator orientation="vertical" style="height: 20px" />
 					<a href="/auth/register" className="hover:cursor-pointer">
-						Register
+						Register <Pencil class="inline ms-1" />
 					</a>
 				</div>
 			</ul>

@@ -7,7 +7,9 @@ let hotPicks = ref([{}, {}, {}, {}, {}, {}]);
 (async () => {
 	try {
 		const data = await fetchHotPicks();
-		hotPicks.value = data.splice(0, 6);
+		hotPicks.value = data
+			.sort(() => Math.random() - Math.random())
+			.splice(0, 6);
 	} catch (error) {
 		console.error(error);
 	}
@@ -46,20 +48,23 @@ onMounted(() => {
 
 <template>
 	<section>
-		<h2 class="text-3xl mt-4 font-bold text-white">Today's hot picks</h2>
+		<h2 class="text-3xl mt-4 font-bold text-white">Current hot picks</h2>
 
 		<div class="flex gap-12 flex-wrap my-4">
-			<article
-				v-for="pick in hotPicks"
-				class="h-[650px] w-[450px] border border-violet-500 card"
-			>
-				<img
-					:src="`https://localhost:7187/api/proxy-image?imageUrl=${encodeURIComponent(
-						pick.cover
-					)}`"
-					crossorigin="anonymous"
-					alt=""
-				/>
+			<article v-for="pick in hotPicks">
+				<RouterLink :to="`/game/${pick.id}`">
+					<div
+						class="h-[650px] w-[450px] border border-violet-500 card"
+					>
+						<img
+							:src="`https://localhost:7187/api/proxy-image?imageUrl=${encodeURIComponent(
+								pick.cover
+							)}`"
+							crossorigin="anonymous"
+							alt=""
+						/>
+					</div>
+				</RouterLink>
 			</article>
 		</div>
 	</section>
@@ -85,9 +90,10 @@ onMounted(() => {
 	height: 100%;
 	background: linear-gradient(
 		45deg,
-		rgba(255, 255, 255, 0.1),
-		rgba(255, 255, 255, 0.15),
-		rgba(255, 255, 255, 0.1)
+		rgba(255, 255, 255, 0.01),
+		rgba(255, 255, 255, 0.25),
+		rgba(255, 255, 255, 0.01),
+		rgba(255, 255, 255, 0.35)
 	);
 	opacity: 0;
 	pointer-events: none;
