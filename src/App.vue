@@ -1,27 +1,22 @@
 <script setup>
-import Navbar from "./components/Navbar.vue";
-import Hero from "./components/Hero.vue";
-import HotPicks from "./components/HotPicks.vue";
+import { RouterView } from "vue-router";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
-// const notify = () => {
-// 	toast("Wow so easy !", {
-// 		autoClose: 1000,
-// 	});
-// };
+
+import Navbar from "./components/Navbar.vue";
 </script>
 
 <template>
 	<div class="container mx-auto p-10 h-screen">
 		<Navbar />
-		<Hero />
-		<HotPicks />
+		<RouterView />
 	</div>
 </template>
 
 <style>
 body {
 	background-color: #111;
+	overflow-x: hidden;
 }
 
 body::after {
@@ -44,7 +39,7 @@ body::before {
 	width: 600px;
 	height: 600px;
 	background-color: #0066cd;
-	bottom: -200px;
+	top: 0px;
 	right: -200px;
 	border-radius: 50%;
 	filter: blur(150px);

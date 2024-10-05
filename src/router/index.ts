@@ -1,0 +1,13 @@
+import { createWebHistory, createRouter } from "vue-router";
+import Game from "@/components/Game.vue";
+import Home from "@/components/Home.vue";
+
+const routes = [
+	{ path: "/", component: Home },
+	{ path: "/game/:id", component: Game },
+];
+
+export const router = createRouter({
+	history: createWebHistory(import.meta.env.BASE_URL),
+	routes,
+});
