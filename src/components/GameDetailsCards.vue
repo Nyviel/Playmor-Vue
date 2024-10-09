@@ -7,7 +7,7 @@ defineProps<{ game: Game }>();
 </script>
 
 <template>
-	<section class="grid grid-cols-3 grid-rows-2 gap-5 mt-12 text-white">
+	<section class="flex flex-col gap-5 text-white">
 		<GameDetailsCard title="Publishers" :content="game.publisher" />
 		<GameDetailsCard title="Developers" :content="game.developer" />
 		<GameDetailsCard title="Platforms" :content="game.platforms" />

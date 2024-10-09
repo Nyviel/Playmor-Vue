@@ -1,15 +1,16 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { fetchHotPicks } from "@/services/gameService.ts";
+import { API } from "@/utilities/constants";
 
-let hotPicks = ref([{}, {}, {}, {}, {}, {}]);
+let hotPicks = ref([{}, {}, {}]);
 
 (async () => {
 	try {
 		const data = await fetchHotPicks();
 		hotPicks.value = data
 			.sort(() => Math.random() - Math.random())
-			.splice(0, 6);
+			.splice(0, 3);
 	} catch (error) {
 		console.error(error);
 	}
@@ -57,7 +58,7 @@ onMounted(() => {
 						class="h-[650px] w-[450px] border border-violet-500 card"
 					>
 						<img
-							:src="`https://localhost:7187/api/proxy-image?imageUrl=${encodeURIComponent(
+							:src="`${API}/proxy-image?imageUrl=${encodeURIComponent(
 								pick.cover
 							)}`"
 							crossorigin="anonymous"

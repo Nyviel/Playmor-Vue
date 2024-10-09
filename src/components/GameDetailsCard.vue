@@ -6,7 +6,7 @@ defineProps<{ title: string; content: Array<any> }>();
 
 <template>
 	<article
-		class="bg-black/25 p-5 rounded-lg text-center border border-white shadow-sm shadow-white"
+		class="bg-black/35 h-fit p-5 rounded-lg text-center border border-white shadow-sm shadow-white"
 	>
 		<h3 class="font-bold text-xl pb-2">{{ title }}</h3>
 		<ul class="flex flex-col gap-1">
