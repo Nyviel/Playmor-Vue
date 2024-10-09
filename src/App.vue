@@ -4,13 +4,15 @@ import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
 import Navbar from "./components/Navbar.vue";
+import Footer from "./components/Footer.vue";
 </script>
 
 <template>
-	<div class="container mx-auto p-10 h-screen">
+	<div class="container mx-auto p-10 min-h-screen">
 		<Navbar />
 		<RouterView />
 	</div>
+	<Footer />
 </template>
 
 <style>
