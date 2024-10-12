@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Game } from "@/interfaces/Game";
-import { defineProps } from "vue";
 import GameDetailsCard from "@/components/GameDetailsCard.vue";
 
 defineProps<{ game: Game }>();
